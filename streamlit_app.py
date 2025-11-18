@@ -11,21 +11,80 @@ st.set_page_config(
 # --- CSS 스타일 추가 (달력 스타일 포함) ---
 st.markdown("""
 <style>
-/* ... (기존 CSS와 동일) ... */
-h1 { color: #2F4F4F; text-align: center; font-size: 3em; }
-h2 { color: #4682B4; font-size: 2.2em; border-bottom: 2px solid #B0C4DE; padding-bottom: 0.3em; }
-h3 { color: #5F9EA0; font-size: 1.8em; }
-div.stButton > button {
-    width: 100%; height: 60px; margin-bottom: 10px; font-size: 18px; font-weight: bold;
-    color: white; background-color: #6A5ACD; border: none; border-radius: 12px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2); transition: all 0.2s ease-in-out;
+/* 전체 폰트 설정 */
+body {
+    font-family: 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
-div.stButton > button:hover { background-color: #483D8B; transform: translateY(-2px); }
-.stAlert.success { background-color: #E0FFE0; color: #2E8B57; border-left: 5px solid #3CB371; }
-.stAlert.info { background-color: #E6F3FF; color: #4169E1; border-left: 5px solid #6495ED; }
-.quiz-box { background-color: #FFFACD; border: 2px dashed #FFD700; border-radius: 10px; padding: 15px 20px; margin-top: 20px; }
-/* ... (기존 CSS와 동일) ... */
-
+/* 앱 제목 */
+.stApp > header {
+    background-color: transparent;
+}
+h1 {
+    color: #2F4F4F; /* Dark Slate Gray */
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+h2 {
+    color: #4682B4; /* Steel Blue */
+    font-size: 2.2em;
+    border-bottom: 2px solid #B0C4DE; /* Light Steel Blue */
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+h3 {
+    color: #5F9EA0; /* Cadet Blue */
+    font-size: 1.8em;
+    margin-top: 1em;
+}
+/* 버튼 스타일 */
+div.stButton > button {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #6A5ACD; /* Slate Blue */
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+}
+div.stButton > button:hover {
+    background-color: #483D8B; /* Dark Slate Blue */
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+}
+/* 라디오 버튼 스타일 */
+div.stRadio > label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #2F4F4F;
+}
+/* 성공 메시지 */
+.stAlert.success {
+    background-color: #E0FFE0; /* Light Green */
+    color: #2E8B57; /* Sea Green */
+    border-left: 5px solid #3CB371; /* Medium Sea Green */
+    font-size: 1.2em;
+}
+/* 정보 메시지 */
+.stAlert.info {
+    background-color: #E6F3FF; /* Light Blue */
+    color: #4169E1; /* Royal Blue */
+    border-left: 5px solid #6495ED; /* Cornflower Blue */
+    font-size: 1.1em;
+}
+/* 퀴즈 박스 */
+.quiz-box {
+    background-color: #FFFACD; /* Lemon Chiffon */
+    border: 2px dashed #FFD700; /* Gold */
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 20px;
+}
 /* === 달력 테이블 스타일 === */
 .calendar-table {
     width: 100%;
@@ -69,11 +128,11 @@ special_days = {
     3: {"event": "학생마당 🎤", "desc": "우리 반 친구들의 멋진 장기자랑 시간!", "emoji": "🎤"},
     10: {"event": "휠체어 무용 공연 💃", "desc": "아름다운 공연을 관람해요.", "emoji": "💃"},
     14: {"event": "명랑운동회 🏃‍♂️", "desc": "다 함께 으쌰으쌰! 신나는 운동회!", "emoji": "🏃‍♂️"},
-    19: {"event": "오늘의 기록 📝", "desc": "오늘의 급식과 시간표를 기록해요.", "emoji": "📝"},
+    19: {"event": "시간표 맞추기 📝", "desc": "오늘의 시간표를 완성해봐요.", "emoji": "📝"}, # 텍스트 수정
     28: {"event": "책 읽어주시는 선생님 📚", "desc": "재미있는 동화책 이야기 시간!", "emoji": "📚"}
 }
 
-# --- 달력 생성 함수 ---
+# --- 달력 생성 함수 (11월 기준) ---
 def generate_november_calendar(special_data):
     """
     11월 달력 HTML을 생성합니다. (2025년 11월 1일은 토요일(weekday=6) 기준)
@@ -135,7 +194,7 @@ if st.button("짠! 확인하기 ✨"):
     st.session_state.today_date = day
     
     st.success(f"딩동댕! 오늘은 {month} {day}일 {weekday}, {selected_weather}입니다!")
-    st.balloons()
+    st.balloons() 
 
     if day in special_days:
         st.info(f"🎉 와! 그리고 오늘은 **{special_days[day]['event']}**이기도 해요!")
@@ -151,10 +210,10 @@ st.write("궁금한 날짜의 버튼을 눌러보세요!")
 
 # 버튼 컬럼 배치 (3개씩 묶어서)
 btn_cols = st.columns(3)
-day_keys = sorted(special_days.keys())
+day_keys = sorted(special_days.keys()) # 날짜 순서대로 정렬
 
 for i, day_num in enumerate(day_keys):
-    with btn_cols[i % 3]:
+    with btn_cols[i % 3]: # 3개씩 배치
         day_info = special_days[day_num]
         if st.button(f"{day_info['emoji']} 11월 {day_num}일 ({day_info['event'].split(' ')[0]})", key=f"btn_{day_num}"):
             st.subheader(f"{day_info['emoji']} {day_info['event']}")
@@ -185,15 +244,61 @@ for i, day_num in enumerate(day_keys):
                 st.info("이 활동은 '국어' > '11월 행사' > '응원 문구 만들기' 자료와 연결됩니다.")
                 st.markdown('</div>', unsafe_allow_html=True)
 
-            # --- 급식/시간표 (19일) ---
+            # --- [수정됨] 급식/시간표 (19일) ---
             if day_num == 19:
                 st.markdown('<div class="quiz-box">', unsafe_allow_html=True)
-                st.subheader("🍚 11월 19일 (수) 오늘의 기록")
-                st.text_area("오늘의 급식 메뉴를 적어주세요.", key="lunch_input", placeholder="예: 카레라이스, 깍두기, 귤")
-                st.text_input("1교시:", key="period_1", placeholder="예: 국어")
-                st.text_input("2교시:", key="period_2", placeholder="예: 수학")
-                st.text_input("3교시:", key="period_3", placeholder="예: 음악")
-                st.text_input("4교시:", key="period_4", placeholder="예: 체육")
+                st.subheader("📝 11월 19일 (수) 시간표 맞추기")
+                st.write("각 교시에 맞는 과목을 선택해 시간표를 완성해보세요!")
+                
+                # 과목 선택지 (요청하신 목록 그대로, 중복 제거 안 함)
+                subjects = [
+                    "-선택-", "국어", "창체", "뉴스포츠", "수학", "과학", 
+                    "체육", "재활", "진로", "정보", "보건", "수학", 
+                    "동아리", "음악", "수중감각", "정보", "미술"
+                ]
+
+                # 시간표 테이블 (st.columns 활용)
+                col1, col2 = st.columns([1, 3]) # [교시, 과목선택] 비율
+                
+                with col1:
+                    st.write("**1교시**")
+                with col2:
+                    st.selectbox("1교시 과목", subjects, key="period_1", label_visibility="collapsed")
+                
+                with col1:
+                    st.write("**2교시**")
+                with col2:
+                    st.selectbox("2교시 과목", subjects, key="period_2", label_visibility="collapsed")
+
+                with col1:
+                    st.write("**3교시**")
+                with col2:
+                    st.selectbox("3교시 과목", subjects, key="period_3", label_visibility="collapsed")
+
+                with col1:
+                    st.write("**4교시**")
+                with col2:
+                    st.selectbox("4교시 과목", subjects, key="period_4", label_visibility="collapsed")
+
+                # 점심시간 (급식 메뉴 입력란 삭제 및 기대 메뉴 추가)
+                st.markdown("---") # 구분선
+                col1_lunch, col2_lunch = st.columns([1, 3])
+                with col1_lunch:
+                    st.write("🍽️ **점심시간**")
+                with col2_lunch:
+                    st.text_input("가장 기대되는 메뉴는 무엇인가요?", key="lunch_menu_expect", placeholder="예: 돈까스!")
+                st.markdown("---") # 구분선
+
+                with col1:
+                    st.write("**5교시**")
+                with col2:
+                    st.selectbox("5교시 과목", subjects, key="period_5", label_visibility="collapsed")
+                
+                with col1:
+                    st.write("**6교시**")
+                with col2:
+                    st.selectbox("6교시 과Mok", subjects, key="period_6", label_visibility="collapsed")
+
                 st.markdown('</div>', unsafe_allow_html=True)
 
             # --- 책 읽어주시는 선생님 (28일) ---
@@ -203,4 +308,3 @@ for i, day_num in enumerate(day_keys):
                 st.text_area("오늘 들은 이야기 중 가장 기억에 남는 장면은 무엇인가요?", key="reading_response")
                 st.info("이 활동은 '국어' > '11월 행사' > '독후 감상 표현하기' 자료와 연결됩니다.")
                 st.markdown('</div>', unsafe_allow_html=True)
-                
