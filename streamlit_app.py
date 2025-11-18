@@ -201,12 +201,40 @@ if st.button("짠! 확인하기 ✨"):
 
 
 # --- 2. '11월' 탐색하기 (계기 교육) ---
-st.header("2. 🍂 11월의 특별한 날들을 탐색해봐요!")
+st.header("2. 🍂 11월을 탐색해봐요!")
 
-# 11월 달력 표 삽입
-st.markdown(generate_november_calendar(special_days), unsafe_allow_html=True)
+# 탭 생성
+tab1, tab2 = st.tabs(["달력 탐색", "기록이 필요한 상황"])
 
-st.write("궁금한 날짜의 버튼을 눌러보세요!")
+# --- 탭 1: 달력 탐색 ---
+with tab1:
+    # 11월 달력 표 삽입
+    st.markdown(generate_november_calendar(special_days), unsafe_allow_html=True)
+    
+    st.write("궁금한 날짜의 버튼을 눌러보세요!")
+
+# --- 탭 2: 기록이 필요한 상황 ---
+with tab2:
+    st.subheader("📝 기록이 필요한 상황 - 형성평가")
+    st.write("다음 상황에서 우리는 기록을 합니다. 각 상황에 적절한 내용을 써보세요!")
+    
+    # 1번 상황
+    st.write("**1. 들은 내용을 '입력창'해야할 때 기록합니다.**")
+    st.text_input("들은 내용의 예시를 써보세요. (예: 선생님이 말씀하신 중요한 내용)", key="record_situation_1", placeholder="예: 지구는 태양 주위를 돈다.")
+    
+    # 2번 상황
+    st.write("**2. 기억하고 싶은 '입력창'을 찾았을 때 기록합니다.**")
+    st.text_input("기억하고 싶은 것의 예시를 써보세요.", key="record_situation_2", placeholder="예: 내 생일, 친구의 이름, 좋아하는 책")
+    
+    # 3번 상황
+    st.write("**3. 정보를 '입력창'해야할 때 기록합니다.**")
+    st.text_input("정보로 남길 내용의 예시를 써보세요.", key="record_situation_3", placeholder="예: 오늘의 날씨, 학교 행사 날짜, 중요한 전화번호")
+    
+    # 4번 상황
+    st.write("**4. 할 일을 '입력창'해야할 때 기록합니다.**")
+    st.text_input("할 일로 기록할 내용의 예시를 써보세요.", key="record_situation_4", placeholder="예: 숙제하기, 책 읽기, 물 마시기")
+    
+    st.success("✨ 모두 작성했나요? 이렇게 다양한 상황에서 기록이 필요합니다!")
 
 # 버튼 컬럼 배치 (3개씩 묶어서)
 btn_cols = st.columns(3)
