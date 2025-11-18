@@ -319,6 +319,8 @@ for i, day_num in enumerate(day_keys):
                     st.write("🍽️ **점심시간**")
                 with col2_lunch:
                     st.text_input("가장 기대되는 메뉴는 무엇인가요?", key="lunch_menu_expect", placeholder="예: 돈까스!")
+                    # 업로드된 점심 이미지 표시
+                    st.image("assets/lunch_19.png", use_column_width=True, caption="11월 19일 점심 메뉴")
                 st.markdown("---") # 구분선
 
                 with col1:
