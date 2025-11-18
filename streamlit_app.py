@@ -216,6 +216,10 @@ with tab1:
 # --- 탭 2: 기록이 필요한 상황 ---
 with tab2:
     st.subheader("📝 기록이 필요한 상황 - 형성평가")
+    
+    # 이미지 표시
+    st.image("https://drive.google.com/uc?export=view&id=1D3ZISX9QTc-j_nSSmJxWG8fB-SFRildS", use_column_width=True, caption="기록이 필요한 상황들")
+    
     st.write("다음 상황에서 우리는 기록을 합니다. 각 상황에 적절한 내용을 써보세요!")
     
     # 1번 상황
