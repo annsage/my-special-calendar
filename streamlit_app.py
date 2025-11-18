@@ -220,23 +220,23 @@ with tab2:
     # 이미지 표시
     st.image("https://drive.google.com/uc?export=view&id=1D3ZISX9QTc-j_nSSmJxWG8fB-SFRildS", use_column_width=True, caption="기록이 필요한 상황들")
     
-    st.write("다음 상황에서 우리는 기록을 합니다. 각 상황에 적절한 내용을 써보세요!")
+    st.write("다음 상황에서 우리는 기록을 합니다. 각 상황에 맞는 단어를 써보세요!")
     
     # 1번 상황
-    st.write("**1. 들은 내용을 '입력창'해야할 때 기록합니다.**")
-    st.text_input("들은 내용의 예시를 써보세요. (예: 선생님이 말씀하신 중요한 내용)", key="record_situation_1", placeholder="예: 지구는 태양 주위를 돈다.")
+    st.write("**1. 들은 내용을 _______해야할 때 기록합니다.**")
+    st.text_input("1번 답:", key="record_situation_1", placeholder="예: 필기, 정리, 기록")
     
     # 2번 상황
-    st.write("**2. 기억하고 싶은 '입력창'을 찾았을 때 기록합니다.**")
-    st.text_input("기억하고 싶은 것의 예시를 써보세요.", key="record_situation_2", placeholder="예: 내 생일, 친구의 이름, 좋아하는 책")
+    st.write("**2. 기억하고 싶은 __을 찾았을 때 기록합니다.**")
+    st.text_input("2번 답:", key="record_situation_2", placeholder="예: 것, 내용, 말")
     
     # 3번 상황
-    st.write("**3. 정보를 '입력창'해야할 때 기록합니다.**")
-    st.text_input("정보로 남길 내용의 예시를 써보세요.", key="record_situation_3", placeholder="예: 오늘의 날씨, 학교 행사 날짜, 중요한 전화번호")
+    st.write("**3. 정보를 ______해야할 때 기록합니다.**")
+    st.text_input("3번 답:", key="record_situation_3", placeholder="예: 저장, 정리, 보관")
     
     # 4번 상황
-    st.write("**4. 할 일을 '입력창'해야할 때 기록합니다.**")
-    st.text_input("할 일로 기록할 내용의 예시를 써보세요.", key="record_situation_4", placeholder="예: 숙제하기, 책 읽기, 물 마시기")
+    st.write("**4. 할 일을 ________해야할 때 기록합니다.**")
+    st.text_input("4번 답:", key="record_situation_4", placeholder="예: 기록, 정리, 메모")
     
     st.success("✨ 모두 작성했나요? 이렇게 다양한 상황에서 기록이 필요합니다!")
 
